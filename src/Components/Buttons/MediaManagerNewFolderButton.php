@@ -19,18 +19,18 @@ final class MediaManagerNewFolderButton extends ActionButton
         parent::__construct(__('moonshine-media-manager::media-manager.new_folder'), route('moonshine.media.manager.new.folder'));
 
         $this->inModal(
-            __('New folder'),
+            __('moonshine-media-manager::media-manager.new_folder'),
             fn(mixed $data): string => (string)FormBuilder::make(
                 $this->getUrl($data),
             )
                 ->fields([
                     Hidden::make('dir'),
-                    Text::make('Name'),
+                    Text::make(__('moonshine-media-manager::media-manager.name'), 'name'),
                 ])
                 ->fill([
                     'dir' => moonshineRequest()->get('path', '/'),
                 ])
-                ->submit(__('Submit')),
+                ->submit(__('moonshine-media-manager::media-manager.submit')),
         )
             ->icon('folder')
             ->secondary()

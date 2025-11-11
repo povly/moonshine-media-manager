@@ -15,7 +15,7 @@ final class MediaManagerViewButton extends ActionButton
 {
     public function __construct(MediaManagerViewEnums $view)
     {
-        parent::__construct(__(''), URLGenerator::query(url()->current(), ['path' => moonshineRequest()->get('path', '/'), 'view' => $view]));
+        parent::__construct(__(''), URLGenerator::query(url()->current(), ['path' => moonshineRequest()->get('path', '/'), 'view' => $view->value]));
 
         $this->icon(match($view) {
             MediaManagerViewEnums::LIST => 'squares-2x2',

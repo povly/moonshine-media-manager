@@ -10,10 +10,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Local\LocalFilesystemAdapter;
-use MoonShine\Laravel\MoonShineUI;
 use MoonShine\Support\Enums\ToastType;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use YuriZoom\MoonShineMediaManager\Enums\MediaManagerView as MediaManagerViewEnums;
 use YuriZoom\MoonShineMediaManager\Helpers\URLGenerator;
 use YuriZoom\MoonShineMediaManager\Pages\MediaManagerPage;
 
@@ -77,14 +75,14 @@ class MediaManager
         $this->storage = Storage::disk($disk);
 
         if (! $this->storage->getAdapter() instanceof LocalFilesystemAdapter) {
-            MoonShineUI::toast(__('moonshine-media-manager::media-manager.error.only_local_storage'), ToastType::ERROR);
+            toast(__('moonshine-media-manager::media-manager.error.only_local_storage'), ToastType::ERROR);
         }
     }
 
     public function ls(): array
     {
         if (! $this->exists()) {
-            MoonShineUI::toast(
+            toast(
                 __('moonshine-media-manager::media-manager.error.file_not_exists', ['path' => $this->path]),
                 ToastType::ERROR
             );
@@ -137,7 +135,7 @@ class MediaManager
     {
         foreach ($files as $file) {
             if ($this->allowed && ! in_array($file->getClientOriginalExtension(), $this->allowed)) {
-                MoonShineUI::toast(
+                toast(
                     __(
                         'moonshine-media-manager::media-manager.error.file_extension_not_allowed',
                         ['ext' => $file->getClientOriginalExtension()]

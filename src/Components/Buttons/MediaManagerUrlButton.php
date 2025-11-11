@@ -34,7 +34,7 @@ final class MediaManagerUrlButton extends MoonShineComponent
 
     public function viewLabel(bool $condition): static
     {
-        $this->label = $condition ? 'Url' : '';
+        $this->label = $condition ? __('moonshine-media-manager::media-manager.url') : '';
 
         return $this;
     }

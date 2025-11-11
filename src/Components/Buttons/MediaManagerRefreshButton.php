@@ -13,7 +13,7 @@ final class MediaManagerRefreshButton extends ActionButton
 {
     public function __construct()
     {
-        parent::__construct('', '');
+        parent::__construct(__('moonshine-media-manager::media-manager.refresh'), '');
 
         $this->icon('arrow-path')->warning()->showInLine();
     }

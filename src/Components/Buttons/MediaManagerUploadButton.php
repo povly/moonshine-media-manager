@@ -20,7 +20,7 @@ final class MediaManagerUploadButton extends ActionButton
 
         $this->success()
             ->inModal(
-                __('Upload'),
+                __('moonshine-media-manager::media-manager.upload'),
                 fn(mixed $data): FormBuilder => FormBuilder::make(
                     $this->getUrl($data),
                 )
@@ -31,7 +31,7 @@ final class MediaManagerUploadButton extends ActionButton
                     ->fill([
                         'dir' => moonshineRequest()->get('path', '/'),
                     ])
-                    ->submit(__('Submit')),
+                    ->submit(__('moonshine-media-manager::media-manager.submit')),
             )
             ->icon('cloud-arrow-up')
             ->showInLine();

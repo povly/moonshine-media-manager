@@ -26,7 +26,7 @@ final class MediaManagerRenameButton extends ActionButton
             )
                 ->fields([
                     Hidden::make('Path', 'path'),
-                    Text::make('New'),
+                    Text::make( __('moonshine-media-manager::media-manager.new_path'), 'new'),
                 ])
                 ->fill([
                     'path' => $data,
@@ -40,7 +40,7 @@ final class MediaManagerRenameButton extends ActionButton
 
     public function viewLabel(bool $condition): static
     {
-        $this->setLabel($condition ? 'Rename & Move' : '');
+        $this->setLabel($condition ? __('moonshine-media-manager::media-manager.rename') : '');
 
         return $this;
     }

@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
-use MoonShine\Laravel\MoonShineRequest;
+use MoonShine\Contracts\Core\DependencyInjection\CrudRequestContract as MoonShineRequest;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use YuriZoom\MoonShineMediaManager\MediaManager;
 

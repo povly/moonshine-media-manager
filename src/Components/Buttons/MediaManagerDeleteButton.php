@@ -38,7 +38,7 @@ final class MediaManagerDeleteButton extends ActionButton
 
     public function viewLabel(bool $condition): MediaManagerDeleteButton
     {
-        $this->setLabel($condition ? 'Delete' : '');
+        $this->setLabel($condition ? __('moonshine-media-manager::media-manager.delete') : '');
 
         return $this;
     }

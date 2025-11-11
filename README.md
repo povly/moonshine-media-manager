@@ -1,18 +1,19 @@
-Media manager for MoonShine 3
+Media manager for MoonShine 4
 ============================
 
 Media manager в MoonShine.
 
 ### Поддержка версий MoonShine
 
-| MoonShine   | Пакет       |
-|-------------|-------------|
-| 2.0+        | 1.0+        |
-| 3.0+        | 2.0+        |
+| MoonShine | Пакет |
+|-----------|-------|
+| 2.0+      | 1.0+  |
+| 3.0+      | 2.0+  |
+| 4.0+      | 3.0+  |
 
 ## Скриншот
 
-![wx20170809-165644](https://raw.githubusercontent.com/yurizoom/moonshine-media-manager/main/blob/screenshot.png)
+![screenshot](https://github.com/yurizoom/moonshine-media-manager/blob/main/blob/screenshot.png?raw=true)
 
 ## Установка
 
@@ -50,10 +51,7 @@ protected function menu(): array
         return [
             ...
             
-            MenuItem::make(
-                __('Media manager'),
-                new MediaManagerPage(),
-            ),
+            MenuItem::make(new MediaManagerPage()),
             
             ...
         ];

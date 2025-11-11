@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace YuriZoom\MoonShineMediaManager\Pages;
 
-use MoonShine\Laravel\Components\Fragment;
+use MoonShine\Crud\Components\Fragment;
 use MoonShine\Laravel\Pages\Page;
 use MoonShine\UI\Components\Breadcrumbs;
 use MoonShine\UI\Components\Layout\Box;

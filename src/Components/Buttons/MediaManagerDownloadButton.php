@@ -20,7 +20,7 @@ final class MediaManagerDownloadButton extends ActionButton
 
     public function viewLabel(bool $condition): MediaManagerDownloadButton
     {
-        $this->setLabel($condition ? 'Download' : '');
+        $this->setLabel($condition ? __('moonshine-media-manager::media-manager.download') : '');
 
         return $this;
     }
