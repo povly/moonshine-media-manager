@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use YuriZoom\MoonShineMediaManager\Controllers\MediaManagerController;
 
+$middleware = config('moonshine.auth.middleware');
+$middleware = is_array($middleware) ? $middleware : [$middleware];
+
 Route::group([
     'prefix' => config('moonshine.route.prefix'),
     'as' => 'moonshine.',
-    'middleware' => [config('moonshine.auth.middleware'), 'web'],
+    'middleware' => [...$middleware, 'web'],
 ], function () {
     Route::get('media', [MediaManagerController::class, 'index'])->name('media.manager.index');
     Route::get('media/download', [MediaManagerController::class, 'download'])->name('media.manager.download');
