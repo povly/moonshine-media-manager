@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use MoonShine\Support\Enums\ToastType;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use YuriZoom\MoonShineMediaManager\Events\MediaManagerFileDeleted;
+use YuriZoom\MoonShineMediaManager\Events\MediaManagerFileUploaded;
 use YuriZoom\MoonShineMediaManager\Helpers\URLGenerator;
 use YuriZoom\MoonShineMediaManager\Pages\MediaManagerPage;
 
@@ -114,6 +116,9 @@ class MediaManager
         foreach ($paths as $path) {
             if ($this->storage->fileExists($path)) {
                 $this->storage->delete($path);
+                if (class_exists(MediaManagerFileDeleted::class)) {
+                    MediaManagerFileDeleted::dispatch($path, $this->getDisk());
+                }
             } else {
                 $this->storage->deleteDirectory($path);
             }
@@ -142,10 +147,15 @@ class MediaManager
                     ),
                     ToastType::ERROR
                 );
+
                 return false;
             }
 
+            $path = rtrim($this->path, '/').'/'.$file->getClientOriginalName();
             $this->storage->putFileAs($this->path, $file, $file->getClientOriginalName());
+            if (class_exists(MediaManagerFileUploaded::class)) {
+                MediaManagerFileUploaded::dispatch($path, $this->getDisk());
+            }
         }
 
         return true;
@@ -161,6 +171,11 @@ class MediaManager
     public function exists(): bool
     {
         return $this->storage->exists($this->path);
+    }
+
+    public function getDisk(): string
+    {
+        return config('moonshine.media_manager.disk', 'public');
     }
 
     /**
