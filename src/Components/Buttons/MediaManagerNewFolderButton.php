@@ -20,7 +20,7 @@ final class MediaManagerNewFolderButton extends ActionButton
 
         $this->inModal(
             __('moonshine-media-manager::media-manager.new_folder'),
-            fn(mixed $data): string => (string)FormBuilder::make(
+            fn (mixed $data): string => (string) FormBuilder::make(
                 $this->getUrl($data),
             )
                 ->fields([

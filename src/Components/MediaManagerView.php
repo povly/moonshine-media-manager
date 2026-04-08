@@ -30,7 +30,7 @@ final class MediaManagerView extends MoonShineComponent
     protected function viewData(): array
     {
         return [
-            'items' => array_map(fn($item) => MediaManagerItem::make($this->viewType, $item), $this->list)
+            'items' => array_map(fn ($item) => MediaManagerItem::make($this->viewType, $item), $this->list),
         ];
     }
 }

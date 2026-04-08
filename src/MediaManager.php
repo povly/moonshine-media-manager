@@ -22,14 +22,8 @@ use YuriZoom\MoonShineMediaManager\Pages\MediaManagerPage;
  */
 class MediaManager
 {
-    /**
-     * @var string
-     */
     protected string $path = '/';
 
-    /**
-     * @var Filesystem
-     */
     protected Filesystem $storage;
 
     /**
@@ -39,9 +33,6 @@ class MediaManager
      */
     protected array $allowed = [];
 
-    /**
-     * @var array
-     */
     protected array $fileTypes = [
         'image' => 'png|jpg|jpeg|tmp|gif',
         'word' => 'doc|docx',
@@ -56,8 +47,6 @@ class MediaManager
 
     /**
      * MediaManager constructor.
-     *
-     * @param  string  $path
      */
     public function __construct(string $path = '/')
     {
@@ -88,6 +77,7 @@ class MediaManager
                 __('moonshine-media-manager::media-manager.error.file_not_exists', ['path' => $this->path]),
                 ToastType::ERROR
             );
+
             return [];
         }
 
@@ -134,7 +124,6 @@ class MediaManager
 
     /**
      * @param  UploadedFile[]  $files
-     * @return bool
      */
     public function upload(array $files = []): bool
     {
@@ -178,14 +167,12 @@ class MediaManager
         return config('moonshine.media_manager.disk', 'public');
     }
 
-    /**
-     * @return array
-     */
     public function urls(): array
     {
         return [
             'path' => $this->path,
-            'index' => $this->indexUrl(),
+            'index' => route('moonshine.media.manager.index'),
+            'page' => $this->indexUrl(),
             'move' => route('moonshine.media.manager.move'),
             'delete' => route('moonshine.media.manager.delete'),
             'upload' => route('moonshine.media.manager.upload'),

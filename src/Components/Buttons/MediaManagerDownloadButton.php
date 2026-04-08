@@ -11,7 +11,7 @@ use MoonShine\UI\Components\ActionButton;
  */
 final class MediaManagerDownloadButton extends ActionButton
 {
-    public function __construct(readonly string $path)
+    public function __construct(public readonly string $path)
     {
         parent::__construct(__(''), $path);
 

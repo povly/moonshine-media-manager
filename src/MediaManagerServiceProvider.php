@@ -23,6 +23,10 @@ class MediaManagerServiceProvider extends ServiceProvider
             'preview' => MediaManagerPreview::class,
         ]);
 
+        $this->publishes([
+            __DIR__.'/../resources/js/media-manager.js' => public_path('vendor/media-manager/media-manager.js'),
+        ], 'media-manager-assets');
+
         $core
             ->pages([
                 MediaManagerPage::class,

@@ -35,11 +35,11 @@ final class MediaManagerItem extends MoonShineComponent
         return [
             'items' => $this->items,
             'actions' => [
-                MediaManagerDownloadButton::make($this->items['download'])->canSee(fn() => !$this->items['isDir'])->viewLabel($this->viewType == MediaManagerViewEnums::LIST),
+                MediaManagerDownloadButton::make($this->items['download'])->canSee(fn () => ! $this->items['isDir'])->viewLabel($this->viewType == MediaManagerViewEnums::LIST),
                 MediaManagerUrlButton::make($this->items['url'])->viewLabel($this->viewType == MediaManagerViewEnums::LIST),
                 MediaManagerRenameButton::make(new MixedDataWrapper($this->items['path']))->viewLabel($this->viewType == MediaManagerViewEnums::LIST),
                 MediaManagerDeleteButton::make(new MixedDataWrapper($this->items['path']))->viewLabel($this->viewType == MediaManagerViewEnums::LIST),
-            ]
+            ],
         ];
     }
 }

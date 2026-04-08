@@ -21,7 +21,7 @@ final class MediaManagerUploadButton extends ActionButton
         $this->success()
             ->inModal(
                 __('moonshine-media-manager::media-manager.upload'),
-                fn(mixed $data): FormBuilder => FormBuilder::make(
+                fn (mixed $data): FormBuilder => FormBuilder::make(
                     $this->getUrl($data),
                 )
                     ->fields([

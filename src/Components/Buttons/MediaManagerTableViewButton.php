@@ -19,7 +19,7 @@ final class MediaManagerTableViewButton extends MoonShineComponent
     protected function viewData(): array
     {
         return [
-            'path' => moonshineRequest()->get('path', '/')
+            'path' => moonshineRequest()->get('path', '/'),
         ];
     }
 }

@@ -21,16 +21,16 @@ final class MediaManagerRenameButton extends ActionButton
 
         $this->inModal(
             __('moonshine-media-manager::media-manager.rename'),
-            fn(mixed $data): string => (string)FormBuilder::make(
+            fn (mixed $data): string => (string) FormBuilder::make(
                 $this->getUrl($data),
             )
                 ->fields([
                     Hidden::make('Path', 'path'),
-                    Text::make( __('moonshine-media-manager::media-manager.new_path'), 'new'),
+                    Text::make(__('moonshine-media-manager::media-manager.new_path'), 'new'),
                 ])
                 ->fill([
                     'path' => $data,
-                    'new' => $data
+                    'new' => $data,
                 ]),
         )
             ->primary()
