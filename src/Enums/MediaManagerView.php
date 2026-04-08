@@ -2,8 +2,7 @@
 
 namespace YuriZoom\MoonShineMediaManager\Enums;
 
-enum MediaManagerView: string
-{
+enum MediaManagerView: string {
     case TABLE = 'table';
     case LIST = 'list';
 }
